@@ -1,0 +1,31 @@
+.card-open-button {
+  width: 200px;
+  max-width: 1000px;
+  height: 35px;
+  background-color: pink;
+  color: rgb(168, 66, 168);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 1s;
+  margin: auto;
+  border-radius: 10px;
+}
+
+
+.canvas {
+    margin: 50px auto;
+    padding: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    width: 200px;
+  }
+  .carta {
+    width: 200px;
+    height: 100px;
+  }
+}
+

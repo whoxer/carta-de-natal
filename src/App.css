@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: pink;
+  background-color: rgb(168, 66, 168);
+}
+
+
+.description {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  text-align: center;
+  padding: 10px;
+}
