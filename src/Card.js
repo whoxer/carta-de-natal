@@ -3,8 +3,9 @@ import LoveText from './LoveText';
 import './Card.css';
 
 function Card() {
-  const [open, setOpen] = useState(false);
-  const canvasRef = useRef(null);
+  const [open, setOpen] = useState(false)
+  const [showLoveText, setShowLoveText] = useState(false)
+  const canvasRef = useRef(null)
 
   /* Carta fechada */
   useEffect(() => {
@@ -24,21 +25,21 @@ function Card() {
     context.beginPath()
     context.moveTo(10, 10)
     context.lineTo(10, 210)
-    context.strokeStyle = "rgb(168, 66, 168)";
+    context.strokeStyle = "rgb(168, 66, 168)"
     context.lineWidth = 2
     context.stroke()
 
     context.beginPath();
     context.moveTo(10, 10);
     context.lineTo(310, 10);
-    context.strokeStyle = "rgb(168, 66, 168)";
+    context.strokeStyle = "rgb(168, 66, 168)"
     context.lineWidth = 2;
     context.stroke();
 
     context.beginPath();
     context.moveTo(10, 210);
     context.lineTo(310, 210);
-    context.strokeStyle = "rgb(168, 66, 168)";
+    context.strokeStyle = "rgb(168, 66, 168)"
     context.lineWidth = 4;
     context.stroke();
 
@@ -46,7 +47,7 @@ function Card() {
     context.beginPath();
     context.moveTo(310, 10);
     context.lineTo(310, 210);
-    context.strokeStyle = "rgb(168, 66, 168)";
+    context.strokeStyle = "rgb(168, 66, 168)"
     context.lineWidth = 4;
     context.stroke();
 
@@ -54,14 +55,14 @@ function Card() {
     context.beginPath();
     context.moveTo(10, 10);
     context.lineTo(310 / 2, 210 / 2);
-    context.strokeStyle = "rgb(168, 66, 168)";
+    context.strokeStyle = "rgb(168, 66, 168)"
     context.lineWidth = 2;
     context.stroke();
 
     context.beginPath();
     context.moveTo(310, 10);
-    context.lineTo(310 / 2, 210 / 2);
-    context.strokeStyle = "rgb(168, 66, 168)";
+    context.lineTo(310 / 2, 210 / 2)
+    context.strokeStyle = "rgb(168, 66, 168)"
     context.lineWidth = 2;
     context.stroke();
 
@@ -130,6 +131,7 @@ function Card() {
         progress += 2; // Velocidade da animação
         requestAnimationFrame(animate);
       } else {
+        setShowLoveText(true)
         setOpen(true); // Finaliza a animação
       }
     }
@@ -143,19 +145,37 @@ function Card() {
     }
   }
 
+  if (showLoveText) {
+    return <LoveText />
+  }
+
+
   return (
-    <div className="card-container">
-      <div className="canvas-container">
-        <canvas className="canvas" ref={canvasRef} width={310} height={210} />
-      </div>
-      <button
-        className={`card-open-button ${open ? "open" : ""}`}
-        onClick={openCard}
-      >
-        Abrir
-      </button>
-      <LoveText />
-    </div>
+    <>
+      {showLoveText ? (
+        <LoveText />
+      ) : (
+        <div>
+          <h1>Abra a carta!</h1>
+          <div className="card-container">
+            <div className="canvas-container">
+              <canvas
+                className="canvas"
+                ref={canvasRef}
+                width={310}
+                height={210}
+              />
+            </div>
+            <button
+              className={`card-open-button ${open ? "open" : ""}`}
+              onClick={openCard}
+            >
+              Abrir
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
